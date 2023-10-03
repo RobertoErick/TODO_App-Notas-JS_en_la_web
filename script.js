@@ -1,4 +1,6 @@
-(() => {
+import checkComplete from "./components/checkcomplete.js";
+import deleteIcon from "./components/deleteIcon.js";
+//(() => {
 const btn = document.querySelector('[data-form-btn]');      //crear una variable a partir de eñ selector que esta en el HTML
 
 //console.log(btn);                                           //imprimir la funcion en la consola, el valor del boton 
@@ -20,13 +22,14 @@ const createTask = (evento) => {                           //Se crea un listener
     titleTask.innerText = value;                            //coloca el texto que escribio el usuario
     taskContent.appendChild(checkComplete());               //el simbolo de check para la tarea
     taskContent.appendChild(titleTask);                     //la tarea que escribio el usuario y que esta cyardada en titletask
-    
+
     const content = `
     <i class="fas fa-trash-alt trashIcon icon"></i>`;       //Codigo HTML para crear un elemento nuevo en la lista con el valor que se tenga en input
     // task.innerHTML = content;                            //Funcion para agregar el codigo HTML escrito anteriormente
-    task.appendChild(taskContent);                          //contenido de la tarea
+    task.appendChild(taskContent);                         //contenido de la tarea
     list.appendChild(task);                                 //Colocar como hijo de task
-    
+    task.appendChild(deleteIcon()); 
+
     //console.log(content);                               //despues imprimimos en la conosla el valor del input que se agrego
 }
 
@@ -40,18 +43,4 @@ const createTask = (evento) => {                           //Se crea un listener
 //Misma manera pero mas corta
 //Arrow functions o funciones anonimas
 btn.addEventListener('click', createTask);                  //Cuando se de unn click, vamos a ir a la funcion crate Task
-
-const checkComplete = () => {                               //esta funcion sirve para que cuando se presione el boton check cambie a azul
-    const i = document.createElement('i');
-    i.classList.add('far', 'fa-check-square', 'icon');
-    i.addEventListener('click', completeTask);
-    return i;
-};
-
-const completeTask = (event) => {
-    const element = event.target;
-    element.classList.toggle('fas');
-    element.classList.toggle('completeIcon');
-    element.classList.remove('far');
-};
-})();                                                      //Todo se encierra dentro de una funcion y se llama al instante para evitar que este al alcance del usuario
+//})();                                                      //Todo se encierra dentro de una funcion y se llama al instante para evitar que este al alcance del usuario
