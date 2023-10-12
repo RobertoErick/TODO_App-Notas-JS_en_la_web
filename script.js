@@ -1,4 +1,4 @@
-import checkComplete from "./components/checkcomplete.js";
+import checkComplete from "./components/checkComplete";
 import deleteIcon from "./components/deleteIcon.js";
 //(() => {
 const btn = document.querySelector('[data-form-btn]');      //crear una variable a partir de eñ selector que esta en el HTML
